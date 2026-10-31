@@ -13,7 +13,7 @@ team_url = "https://www.rust-lang.org/governance/teams/launching-pad#team-mentor
 
 The Rust Project [participated][gsoc-blog-post] in [Google Summer of Code (GSoC)][gsoc] for the third time this year. This time, we had 13 projects, whose contributors have been working on very hard for several months. As usually, the projects had various durations, so while some of them have ended in August, the last one has only finished in November, so we have been waiting until we have all the results before publishing this blog post.
 
-**We are very happy to announce that all 13 projects were successful and passed their final evaluation!** We consider it to be a testament to the dilligence of our contributors, and the helpfulness of our mentors, that we are able to keep a very high rate[^success-rate] of successful GSoC projects several years in a row.
+**We are very happy to announce that all 13 projects were successful and passed their final evaluation!** We consider it to be a testament to the diligence of our contributors, and the helpfulness of our mentors, that we are able to keep a very high rate[^success-rate] of successful GSoC projects several years in a row.
 
 [^success-rate]: 97.5% over a three-year period, if you are wondering (40 out of 41 projects were successful so far).
 
@@ -117,7 +117,7 @@ TODO
 
 And we can happily say that progress was indeed made! The original goal of Adam's project was to deprecate a number of constants that were difficult to maintain and cleanup inconsistencies in handling 32-bit/64-bit variants of file and time handling functions[^2038]. Adam was able to resolve that in a few weeks, and then he moved on to resolve a number of various issues blocking the [1.0 milestone][milestone].
 
-Saying that Adam was productive would be… an understatement. We could follow his work in real-time, because he was posting [daily GSoC reports][libc-gsoc-updates] for *116 days (!) in a row*. The dilligence and consistency with which he tackled so many complicated issues was an inspiration to us. In fact, sometimes the `libc` reviewers were not able to keep up!
+Saying that Adam was productive would be… an understatement. We could follow his work in real-time, because he was posting [daily GSoC reports][libc-gsoc-updates] for *116 days (!) in a row*. The diligence and consistency with which he tackled so many complicated issues was an inspiration to us. In fact, sometimes the `libc` reviewers were not able to keep up!
 
 You can find all Adam's `libc` pull requests [here][libc-prs]. You might notice that many of them have lots of comments, and even more discussions happened in GitHub issues and on Zulip. In addition to implementing the necessary code, making changes that affect interesting C platforms and architectures also required him to do a ton of research, and a lot of considerations of edge cases and possible backwards compatibility breakages. His work also took him on a whirlwind tour of diverse platforms; Adam's contributions spanned FreeBSD, NetBSD, Android, Hurd, NuttX, AIX, VxWorks, Fuchsia, L4Re and more.
 
@@ -169,7 +169,7 @@ When someone changes the intrinsics in the main repo, breakages can silently cre
 
 And that is where Sumit came in! Over the course of his GSoC project, he examined the (very!) complex ways the intrinsics are tested in `stdarch`, and started porting them over to the main repo. But this was not a matter of copying over a few lines of YAML. The compiler repo uses its own build system (called `bootstrap`) and a CI workflow structure that is quite different from the `stdarch` repository. Sumit thus had to first understand what is each test suite doing, reimplement it as a part of bootstrap and finally integrate it into the compiler's CI workflows.
 
-We run ~90 CI jobs across several hardware architectures, operating systems and *OS versions*. Getting all that to work while testing *vendor-specific* intrinsics required a lot of dilligent work… and a lot of patience. It took *five months* for [one][stdarch-gen-tests] of the test suites to finally succeed on the main repo's CI, and it required Sumit to completely refactor how the suite worked, for it to be more compatible with bootstrap. As another example, a [different][intrinsic-tests] test suite that Sumir also got to work required running the tests in a `qemu` emulator on CI.
+We run ~90 CI jobs across several hardware architectures, operating systems and *OS versions*. Getting all that to work while testing *vendor-specific* intrinsics required a lot of diligent work… and a lot of patience. It took *five months* for [one][stdarch-gen-tests] of the test suites to finally succeed on the main repo's CI, and it required Sumit to completely refactor how the suite worked, for it to be more compatible with bootstrap. As another example, a [different][intrinsic-tests] test suite that Sumir also got to work required running the tests in a `qemu` emulator on CI.
 
 Sumit ported most of the `stdarch` test suites to `bootstrap`, including intrinsics verification against reference *C* implementations, checks for automatically generated source code being up-to-date, and various unit tests for individual intrinsics and CPU feature detection logic. There is one [remaining][core-arch-tests] test suite to port, but the ported tests are already helping us find issues, which is great.
 
