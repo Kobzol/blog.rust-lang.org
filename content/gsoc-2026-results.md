@@ -186,7 +186,19 @@ You can check Sumit's `rust-lang` PRs [here][xonx4l-prs]; notice that he was als
 - Mentors: [Teapot](https://github.com/Teapot4195), [Kivooeo](https://github.com/Kivooeo)
 - [Final report](https://gist.github.com/zedddie/7170d2280bc9e19da84cd7eb4e3b32e0)
 
-TODO
+The goal of this project was to get rid of a very scary place in the Rust compiler's test suite: a directory called `tests/ui/issues`. It contained thousands of test files based on historical Rust issues, dating back all the way to 2012. The problem with those tests was that they were named only with an issue number (e.g. `issue-37291`). When such a test would break, it was quite difficult to figure out what was it even supposed to test, because there was little context attached to it.
+
+Even though we already had a GSoC project to tackle this problem [last year][oneirical-gsoc-project-2025], due to the sheer amount of uncategorized tests, there were still over four hundred tests left in this directory by the time zedddie started working on this project.
+
+For each test in this directory, zedddie had to first understand what was the test doing and dig through its original GitHub issue and any other related issues and pull requests. Then they had to figure out what would be the best location to move the test under, search for any possible duplicates, come up with a descriptive name for the test (that tends to be very difficult!), and finally add a short description to the test that explains the context of why the test was added in the first place. Rinse and repeat, for hundreds of tests.
+
+zedddie rolled up their sleeves, and categorized over 300 tests in 30 pull requests. Together with other contributors helping out over this summer, zedddie was finally able to remove the last batch of [uncategorized tests][remove-ui-tests-pr] at the start of August. As zedddie said in their [final report][final-report]: "What is left to do: nothing, tests/ui/issues is gone".
+
+While this work might sound a bit bland, its positive effect on the maintainability of our test suite, and improving the lives of Rust compiler contributors, is considerable. It is also apparently a great way to learn about cool niche edge cases of Rust that most Rust developers might not know about! After migrating the remaining uncategorized UI tests, zedddie continued contributing to the next trait solver and const generics. Thank you very much for helping us finally get rid of `tests/ui/issues`, zedddie!
+
+[oneirical-gsoc-project-2025]: https://blog.rust-lang.org/2025/11/18/gsoc-2025-results/#mapping-the-maze-of-rust-s-ui-test-suite-with-established-continuous-integration-practices
+[remove-ui-tests-pr]: https://github.com/rust-lang/rust/pull/160176
+[final-report]: https://gist.github.com/zedddie/7170d2280bc9e19da84cd7eb4e3b32e0
 
 ### Utilize debugger APIs to improve debug info test accuracy and error reporting
 - Contributor: [Anthony Bolden](https://github.com/Walnut356)
